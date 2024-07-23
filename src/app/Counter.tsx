@@ -19,11 +19,17 @@ const Counter = () => {
     setValue(Number(value) - Number(initCount))
   }
 
+  const resetHandler = () => {
+    setInitCount(0)
+    setValue(0)
+  }
+
   return (
     <>
       <input type="text" value={initCount} onChange={changeHandler} />
       <button onClick={addHandler}>Add</button>
       <button onClick={minusHandler}>Minus</button>
+      <button onClick={resetHandler}>Reset</button>
       {
        isNaN(value) === true?
       <h2 style={{color: "red"}}>Invalid input</h2> :
