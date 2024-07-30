@@ -1,28 +1,27 @@
 "use client";
 import React, { useState } from "react";
 
-
-
 const Counter = () => {
   const [initCount, setInitCount] = useState(1);
   const [value, setValue] = useState(0);
-  
+
   const changeHandler = (evevt: any) => {
     setInitCount(evevt.target.value);
   };
 
   const addHandler = () => {
-    setValue(Number(initCount) + Number(value));
+    setValue(Number(value) + Number(initCount));
   };
 
   const minusHandler = () => {
-    setValue(Number(value) - Number(initCount))
-  }
+    if(value === 0) return
+    setValue(Number(value) - Number(initCount));
+  };
 
   const resetHandler = () => {
-    setInitCount(0)
-    setValue(0)
-  }
+    setInitCount(0);
+    setValue(0);
+  };
 
   return (
     <>
@@ -30,13 +29,13 @@ const Counter = () => {
       <button onClick={addHandler}>Add</button>
       <button onClick={minusHandler}>Minus</button>
       <button onClick={resetHandler}>Reset</button>
-      {
-       isNaN(value) === true?
-      <h2 style={{color: "red"}}>Invalid input</h2> :
-      <h2>{value}</h2>
-      }
+      {isNaN(value) === true ? (
+        <h2 style={{ color: "red" }}>Invalid input</h2>
+      ) : (
+        <h2>{value}</h2>
+      )}
     </>
   );
-};  
+};
 
 export default Counter;
